@@ -4,8 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import parkesfamily.co.uk.lotterychecker.Table_Players;
-
 /**
  * Created by Gav on 09/01/2015.
  */

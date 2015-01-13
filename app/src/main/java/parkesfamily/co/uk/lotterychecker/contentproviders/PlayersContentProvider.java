@@ -13,7 +13,7 @@ import android.text.TextUtils;
 import java.util.Arrays;
 import java.util.HashSet;
 
-import parkesfamily.co.uk.lotterychecker.Table_Players;
+import parkesfamily.co.uk.lotterychecker.database.Table_Players;
 import parkesfamily.co.uk.lotterychecker.database.DatabaseHelper;
 
 /**
