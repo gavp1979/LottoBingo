@@ -5,10 +5,11 @@
     tools:context="parkesfamily.co.uk.lotterychecker.PlayersFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
+
+    <ListView
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:text="Players Fragment"
-        android:id="@+id/lblPlayers"/>
+        android:id="@+id/lstPlayers"
+        android:layout_gravity="center"/>
 
 </FrameLayout>

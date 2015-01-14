@@ -19,6 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <provider
+            android:authorities="uk.co.parkesfamily.android.players.contentprovider"
+            android:name=".contentproviders.PlayersContentProvider">
+        </provider>
     </application>
 
 </manifest>

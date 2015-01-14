@@ -33,7 +33,7 @@ public class Table_Players
             + COLUMN_NUMBER_3 + " integer not null,"
             + COLUMN_NUMBER_4 + " integer not null,"
             + COLUMN_NUMBER_5 + " integer not null,"
-            + COLUMN_NUMBER_6 + " integer not null,"
+            + COLUMN_NUMBER_6 + " integer not null"
             + ");";
 
     public static void onCreate(SQLiteDatabase database) {

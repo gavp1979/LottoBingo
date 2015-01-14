@@ -54,4 +54,11 @@
         android:layout_toEndOf="@+id/section_label"
         android:layout_below="@+id/lblMyNumbersCaption"/>
 
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lstGameCard"
+        android:layout_below="@+id/lblLatestNumbersData"
+        android:layout_centerHorizontal="true"/>
+
 </RelativeLayout>

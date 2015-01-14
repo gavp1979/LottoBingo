@@ -1,13 +1,18 @@
 package parkesfamily.co.uk.lotterychecker;
 
 import android.app.Activity;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
+import parkesfamily.co.uk.lotterychecker.contentproviders.PlayersContentProvider;
+import parkesfamily.co.uk.lotterychecker.database.Table_Players;
 
 
 /**
@@ -28,6 +33,8 @@ public class PlayersFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private ListView _lstPlayers;
 
     private OnFragmentInteractionListener mListener;
 
@@ -65,7 +72,18 @@ public class PlayersFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_players, container, false);
+        View view = inflater.inflate(R.layout.fragment_players, container, false);
+
+        _lstPlayers = (ListView) view.findViewById(R.id.lstPlayers);
+        Cursor cur = getActivity().getContentResolver().query(PlayersContentProvider.CONTENT_URI, null, null, null, null);
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter( getActivity(),
+                                                              android.R.layout.simple_list_item_1,
+                                                              cur,
+                                                              new String[] {Table_Players.COLUMN_NAME},
+                                                              new int[] { android.R.id.text1 });
+        _lstPlayers.setAdapter(adapter);
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
