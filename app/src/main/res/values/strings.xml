@@ -4,7 +4,7 @@
     <string name="app_name">Lottery Checker</string>
     <string name="title_section_main">Main Form</string>
     <string name="title_section_players">Players</string>
-    <string name="title_section3">Section 3</string>
+    <string name="title_section_draws">Draws</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Refresh</string>
