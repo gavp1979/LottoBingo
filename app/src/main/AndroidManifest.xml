@@ -24,6 +24,12 @@
             android:authorities="uk.co.parkesfamily.android.players.contentprovider"
             android:name=".contentproviders.PlayersContentProvider">
         </provider>
+
+        <provider
+            android:authorities="uk.co.parkesfamily.android.draws.contentprovider"
+            android:name=".contentproviders.DrawsContentProvider">
+
+            </provider>
     </application>
 
 </manifest>
