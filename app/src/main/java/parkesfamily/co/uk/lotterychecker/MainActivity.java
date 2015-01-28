@@ -36,6 +36,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 public class MainActivity extends ActionBarActivity
@@ -69,7 +70,8 @@ public class MainActivity extends ActionBarActivity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
-        getLatestNumbers();
+        //getLatestNumbers();
+        getDayOfWeek();
     }
 
     private void getLatestNumbers()
@@ -182,6 +184,15 @@ public class MainActivity extends ActionBarActivity
         }
     }
 
+    private void getDayOfWeek()
+    {
+        Calendar cal = Calendar.getInstance();
+        cal.set(2015, 0, 1);
+        int iDayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+
+        Toast.makeText(this, "Day of Week: " + iDayOfWeek, Toast.LENGTH_LONG).show();
+    }
+
     private class LotteryReader extends AsyncTask<String, String, Void>
     {
         private ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
@@ -205,8 +216,14 @@ public class MainActivity extends ActionBarActivity
         @Override
         protected Void doInBackground(String... params)
         {
+            // Latest Draw
             final String url = "http://api.bentasker.co.uk/lottopredict/?action=LatestResults&" +
                                 "key=751fbf6ddfb7c3857d898c21bfdc2b22&game=1&draws=Any";
+
+            // For month
+            //final String url = "http://api.bentasker.co.uk/lottopredict/?action=retrieve&" +
+            //                    "month=2015-01&key= 751fbf6ddfb7c3857d898c21bfdc2b22&game=1";
+            
             ArrayList<NameValuePair> param = new ArrayList<NameValuePair>();
 
             try
