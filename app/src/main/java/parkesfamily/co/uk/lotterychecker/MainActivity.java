@@ -50,6 +50,10 @@ public class MainActivity extends ActionBarActivity
     private LotteryNumbers _myNumbers;
 
     TextView _lblMyNumbers, _lblLatestNumbers;
+    private final String FIRST_DRAW = "10/01/2014";
+    private final int FIRST_DRAW_DAY = 10;
+    private final int FIRST_DRAW_MONTH = Calendar.JANUARY;
+    private final int FIRST_DRAW_YEAR = 2015;
 
     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
@@ -223,7 +227,7 @@ public class MainActivity extends ActionBarActivity
             // For month
             //final String url = "http://api.bentasker.co.uk/lottopredict/?action=retrieve&" +
             //                    "month=2015-01&key= 751fbf6ddfb7c3857d898c21bfdc2b22&game=1";
-            
+
             ArrayList<NameValuePair> param = new ArrayList<NameValuePair>();
 
             try
