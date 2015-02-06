@@ -1,5 +1,7 @@
 package parkesfamily.co.uk.lotterychecker;
 
+import org.joda.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -37,12 +39,17 @@ public class DrawDates
         }
     }
 
-    private Calendar _cal;
+    private LocalDate _cal;
+    //private LocalDate _date;
 
     public DrawDates(int iDay, int iMonth, int iYear)
     {
-        _cal = Calendar.getInstance();
-        _cal.set(iYear, iMonth, iDay);
+        /*_cal = Calendar.getInstance();
+        _cal.set(iYear, iMonth, iDay);*/
+
+        _cal = new LocalDate(iYear, iMonth, iDay);
+
+        //_date = new LocalDate(iYear, iMonth, iDay);
     }
 
     public ArrayList<DrawDate> getDrawDates()
@@ -52,8 +59,8 @@ public class DrawDates
         Calendar calNow = Calendar.getInstance();
         String str = calNow.toString();
 
-        DrawDate first = new DrawDate(_cal.get(Calendar.DAY_OF_MONTH), _cal.get(Calendar.MONTH),
-                                      _cal.get(Calendar.YEAR));
+        DrawDate first = new DrawDate(_cal.getDayOfMonth(), _cal.getMonthOfYear(),
+                                      _cal.getYear());
 
         lst.add(first);
         Calendar calNext = getNextDrawDate(_cal);
