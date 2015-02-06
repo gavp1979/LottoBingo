@@ -37,6 +37,7 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity
@@ -75,7 +76,11 @@ public class MainActivity extends ActionBarActivity
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
         //getLatestNumbers();
-        getDayOfWeek();
+        //getDayOfWeek();
+        List<DrawDates.DrawDate> lst;
+        DrawDates Dates = new DrawDates(FIRST_DRAW_DAY, FIRST_DRAW_MONTH, FIRST_DRAW_YEAR);
+        lst = Dates.getDrawDates();
+        Toast.makeText(this, "Number of Draws: " + lst.size(), Toast.LENGTH_LONG).show();
     }
 
     private void getLatestNumbers()
