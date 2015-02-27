@@ -30,6 +30,9 @@
             android:name=".contentproviders.DrawsContentProvider">
 
             </provider>
+        <meta-data
+            android:name="com.crashlytics.ApiKey"
+            android:value="0c42227993c13f4d3119988db86041671e1f24ae" />
     </application>
 
 </manifest>

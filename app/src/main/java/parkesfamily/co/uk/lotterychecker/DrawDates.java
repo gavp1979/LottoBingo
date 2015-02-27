@@ -1,9 +1,12 @@
 package parkesfamily.co.uk.lotterychecker;
 
+import org.joda.time.Chronology;
+import org.joda.time.Duration;
 import org.joda.time.LocalDate;
+import org.joda.time.base.BaseDateTime;
+import org.joda.time.DateTimeConstants;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 /**
  * Created by Gav on 03/02/2015.
@@ -56,20 +59,22 @@ public class DrawDates
     {
         ArrayList<DrawDate> lst = new ArrayList<DrawDate>();
 
-        Calendar calNow = Calendar.getInstance();
+        LocalDate calNow = LocalDate.now();
         String str = calNow.toString();
 
         DrawDate first = new DrawDate(_cal.getDayOfMonth(), _cal.getMonthOfYear(),
                                       _cal.getYear());
 
         lst.add(first);
-        Calendar calNext = getNextDrawDate(_cal);
+        LocalDate calNext = getNextDrawDate(_cal);
+
         // Iterate through all draw dates from _cal to now and add them to the list
-        while (calNext.getTimeInMillis() < calNow.getTimeInMillis())
+
+        while (calNext.compareTo(calNow) < 0)
         {
-            lst.add(new DrawDate(calNext.get(Calendar.YEAR),
-                                 calNext.get(Calendar.MONTH),
-                                 calNext.get(Calendar.DAY_OF_MONTH)
+            lst.add(new DrawDate(calNext.getYear(),
+                                 calNext.getMonthOfYear(),
+                                 calNext.getDayOfMonth()
                                 )
                     );
 
@@ -79,23 +84,20 @@ public class DrawDates
         return lst;
     }
 
-    private Calendar getNextDrawDate(Calendar calCurrent)
+    private LocalDate getNextDrawDate(LocalDate calCurrent)
     {
-        final int iDay = calCurrent.get(Calendar.DAY_OF_WEEK);
-        Calendar calNext = Calendar.getInstance();
-        calNext.set(calCurrent.get(Calendar.YEAR),
-                    calCurrent.get(Calendar.MONTH),
-                    calCurrent.get(Calendar.DAY_OF_MONTH));
+        final int iDay = calCurrent.getDayOfWeek();
+        LocalDate calNext = new LocalDate(calCurrent);
 
-        if (iDay == Calendar.SATURDAY)
+        if (iDay == DateTimeConstants.SATURDAY)
         {
             // Add 4 days (To get Wednesday)
-            calNext.add(Calendar.DAY_OF_MONTH, 4);
+            calNext = calCurrent.plusDays(4);// add(Calendar.DAY_OF_MONTH, 4);
         }
-        else if (iDay == Calendar.WEDNESDAY)
+        else if (iDay == DateTimeConstants.WEDNESDAY)
         {
             // Add 3 days (To get Saturday)
-            calNext.add(Calendar.DAY_OF_MONTH, 3);
+            calNext = calCurrent.plusDays(3);
         }
         /* else
             throw new Exception("Invalid Draw Day");*/

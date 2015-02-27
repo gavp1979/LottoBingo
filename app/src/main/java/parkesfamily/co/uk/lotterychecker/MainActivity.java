@@ -19,6 +19,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -27,6 +29,8 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.joda.time.DateTimeConstants;
+import org.joda.time.LocalDate;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -36,7 +40,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 
@@ -53,7 +56,7 @@ public class MainActivity extends ActionBarActivity
     TextView _lblMyNumbers, _lblLatestNumbers;
     private final String FIRST_DRAW = "10/01/2014";
     private final int FIRST_DRAW_DAY = 10;
-    private final int FIRST_DRAW_MONTH = Calendar.JANUARY;
+    private final int FIRST_DRAW_MONTH = DateTimeConstants.JANUARY;
     private final int FIRST_DRAW_YEAR = 2015;
 
     /**
@@ -64,6 +67,7 @@ public class MainActivity extends ActionBarActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
@@ -193,14 +197,14 @@ public class MainActivity extends ActionBarActivity
         }
     }
 
-    private void getDayOfWeek()
+  /*  private void getDayOfWeek()
     {
         Calendar cal = Calendar.getInstance();
         cal.set(2015, 0, 1);
         int iDayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
 
         Toast.makeText(this, "Day of Week: " + iDayOfWeek, Toast.LENGTH_LONG).show();
-    }
+    }*/
 
     private class LotteryReader extends AsyncTask<String, String, Void>
     {
